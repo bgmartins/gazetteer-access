@@ -1,5 +1,6 @@
 
 import sqlite3
+import requests
 
 wof_data = "https://data.geocode.earth/wof/dist/spatial/whosonfirst-data-admin-latest.spatial.db.bz2"
 
