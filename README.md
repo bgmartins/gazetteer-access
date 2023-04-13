@@ -1,6 +1,6 @@
 # gazetteer-access
 
-Simple Python library supporting the access to the [who's on first gazetteer data|https://geocode.earth/data/whosonfirst/combined/]. 
+Simple Python library supporting the access to the [who's on first gazetteer data](https://geocode.earth/data/whosonfirst/combined/). 
 
 * Convert place names into structured geographic information (i.e., geocode place names into GeoJSON geometries).
 * Convert point locations of GeoJSON geometries into place names (i.e., reverse geocoding).
