@@ -21,5 +21,13 @@ def download_file(url, filename):
     with open(filename, 'wb') as f:
         f.write(read_file_from_uri(url).read())
 
+def create_database(filename):
+    print("Doenloading data from https://geocode.earth/data/whosonfirst/combined/")
+    download_file(wof_data, filename)
+    conn = spatialite.connect(filename)
+    conn.commit()
+    conn.execute("vacuum")
+    conn.close()
+
 if __name__ == "__main__":
     create_database("gazetteer.db")
