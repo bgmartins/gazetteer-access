@@ -3,9 +3,6 @@ import urllib
 import gzip
 import bz2
 
-#
-# Gazetteer data from https://geocode.earth/data/whosonfirst/combined/
-#
 wof_data = "https://data.geocode.earth/wof/dist/spatial/whosonfirst-data-admin-latest.spatial.db.bz2"
 pop_data = "https://sedac.ciesin.columbia.edu/downloads/data/gpw-v4/gpw-v4-population-count-rev11/gpw-v4-population-count-rev11_2020_30_sec_tif.zip"
 
