@@ -8,7 +8,7 @@ from shapely import geometry
 _vectornet_shapefile = pkg_resources.resource_filename(__name__, 'vectornet_polygons/VectornetDATAforMOOD.shp')
 _vectornet_shapes = fiona.open(_vectornet_shapefile)
 
-def reverse_geocode_point( lat, lon, EPSG=32632, onlyFirst = True, vectornet = True, geoJSON = True ):
+def reverse_geocode_point( lat, lon, EPSG=32632, onlyFirst = True, vectornet = True, geoJSONString = True ):
     if vectornet:
         featureCollection = list()
         p = geometry.Point(lon, lat)
@@ -30,10 +30,10 @@ def reverse_geocode_point( lat, lon, EPSG=32632, onlyFirst = True, vectornet = T
             featureCollection.append(feature)
             if onlyFirst: break
         connection.close()
-    if geoJSON: featureCollection = geojson.dumps(featureCollection)
+    if geoJSONString: featureCollection = geojson.dumps(featureCollection, indent=1)
     return featureCollection
 
-def reverse_geocode_geometry( polygonal_region , EPSG=32632, onlyFirst = True, vectornet = True, geoJSON = True ):
+def reverse_geocode_geometry( polygonal_region , EPSG=32632, onlyFirst = True, vectornet = True, geoJSONString = True ):
     if vectornet:
         featureCollection = list()
         if isinstance(polygonal_region, str):
@@ -62,7 +62,7 @@ def reverse_geocode_geometry( polygonal_region , EPSG=32632, onlyFirst = True, v
             featureCollection.append(feature)
             if onlyFirst: break
         connection.close()
-    if geoJSON: featureCollection = geojson.dumps(featureCollection)
+    if geoJSONString: featureCollection = geojson.dumps(featureCollection, indent=1)
     return featureCollection
 
 if __name__ == "__main__":
