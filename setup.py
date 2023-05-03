@@ -3,7 +3,6 @@ import sqlite3
 import urllib
 import gzip
 import bz2
-import requests
 from zipfile import ZipFile
 from setuptools import setup
 from setuptools.command.develop import develop
