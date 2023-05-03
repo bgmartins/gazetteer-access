@@ -1,4 +1,4 @@
-# gazetteer-access
+# gazetteer_access
 
 Simple Python library supporting the access to the [who's on first gazetteer data](https://geocode.earth/data/whosonfirst/combined/). 
 
@@ -29,7 +29,7 @@ Example usage
 How does it work?
 -----------------
 
-gazetteer-access uses a [sqlite](https://sqlite.org/index.html) database with the data from the [who's on first gazetteer data](https://geocode.earth/data/whosonfirst/combined/). 
+gazetteer_access uses a [sqlite](https://sqlite.org/index.html) database with the data from the [who's on first gazetteer data](https://geocode.earth/data/whosonfirst/combined/). 
 The gazetter entries are complemented with population statistics derived from the [Gridded Population of the World](https://sedac.ciesin.columbia.edu/data/collection/gpw-v4) dataset. 
 
 - Geocoding takes placenames as input and returns poligonal boundaries from the matching gazetteer entries, giving preference to highly populated places.

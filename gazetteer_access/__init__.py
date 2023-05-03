@@ -1,5 +1,5 @@
 """
-gazetteer-access.
+gazetteer_access.
 
 Simple Python library supporting the access to the who's on first gazetteer data.
 """

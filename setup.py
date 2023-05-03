@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name='gazetteer-access',
+    name='gazetteer_access',
     version='0.1.0',    
     description="Simple Python library supporting the access to the who's on first gazetteer data.",
     url='https://github.com/bgmartins/gazetteer-access',
