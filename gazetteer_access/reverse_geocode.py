@@ -6,8 +6,8 @@ from shapely import geometry
 
 def reverse_geocode_point( lat, lon, EPSG=32632, onlyFirst = True, vectorNet = True ):
     if vectorNet:
-        db = pkg_resources.resource_filename(__name__, 'vectornet_polygons/VectornetDATAforMOOD.shp')
-        shapes = fiona.open("my_shapefile.shp")
+        shapefile = pkg_resources.resource_filename(__name__, 'vectornet_polygons/VectornetDATAforMOOD.shp')
+        shapes = fiona.open("shapefile.shp")
 
         featureCollection = list()
         p = geometry.Point(lon, lat)

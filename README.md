@@ -20,6 +20,7 @@ Example usage
 
 ```
 >>> import gazetteer_access as ga
+>>> ga.reverse_geocode_point(38.7223, -9.1393)
 >>> ga.geocode_placename("Lisbon")
 ```
 
