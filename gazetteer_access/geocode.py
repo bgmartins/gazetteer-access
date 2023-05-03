@@ -1,9 +1,9 @@
 import spatialite
 import geojson
-
-db = "gazetteer.db"
+import pkg_resources
 
 def geocode_placename(name , type=None, onlyFirst=True, centroid=False):
+    db = pkg_resources.resource_filename(__name__, 'gazetteer.db')
     connection = spatialite.connect(db)
     if centroid:
         cursor = connection.execute("SELECT DISTINCT AsGeoJSON(geometry.geom), place.id, place.type FROM place, search, geometry WHERE place.id=search.id AND place.source=search.source AND place.id=geometry.id AND place.source=geometry.source AND name=? AND geometry.role='centroid';", (name,) )

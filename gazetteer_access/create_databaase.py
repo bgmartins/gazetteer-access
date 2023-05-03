@@ -30,4 +30,5 @@ def create_database(filename):
     conn.close()
 
 if __name__ == "__main__":
-    create_database("gazetteer.db")
+    db = pkg_resources.resource_filename(__name__, 'gazetteer.db')
+    create_database(db)

@@ -1,9 +1,8 @@
 import spatialite
 import geojson
 
-db = "gazetteer.db"
-
 def reverse_geocode_point( lat, lon, EPSG=32632, onlyFirst = True ):
+    db = pkg_resources.resource_filename(__name__, 'gazetteer.db')
     connection = spatialite.connect(db)
     cursor = connection.execute("SELECT DISTINCT AsGeoJSON(geometry.geom), place.id, place.type FROM place, search, geometry WHERE place.id=search.id AND place.source=search.source AND place.id=geometry.id AND place.source=geometry.source AND ST_Intersects(geometry.geom, ST_GeomFromText('POINT (?)',32632)) AND geometry.role='boundary' ORDER BY Area(geometry.geom) ASC;", (lat, lon) )
     featureCollection = list()

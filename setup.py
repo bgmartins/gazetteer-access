@@ -10,6 +10,8 @@ setup(
     license='BSD 2-clause',
     packages=['gazetteer_access'],
     install_requires=['rasterio', 'rasterstats', 'spatialite', 'geojson', ],
+    include_package_data=True,
+    package_data={'': ['*.db']},
 
     classifiers=[
         'Development Status :: 1 - Planning',
