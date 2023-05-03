@@ -80,9 +80,9 @@ setup(
     author_email='bgmartins@gmail.com',
     license='BSD 2-clause',
     packages=['gazetteer_access'],
-    install_requires=['rasterio', 'rasterstats', 'spatialite', 'geojson', 'parsedatetime' ],
+    install_requires=['rasterio', 'rasterstats', 'spatialite', 'geojson', 'parsedatetime', 'nuts-finder' ],
     include_package_data=True,
-    package_data={'': ['*.db']},
+    package_data={'': ['VectorNet_Polygons/*']},
     cmdclass={
         'develop': PostDevelopCommand,
         'install': PostInstallCommand,
