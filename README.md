@@ -19,9 +19,8 @@ Example usage
 -------------
 
 ```
->>> import gazetteer_access
->>> geocode = Geocoder()
->>> geocode.geocode_placename("Lisbon")
+>>> import gazetteer_access as ga
+>>> ga.geocode_placename("Lisbon")
 ```
 
 **Note**: It's *strongly* recommended that you run this library in a virtual environment. The libraries that gazetteer-access depends on are not always the most recent versions and using a virtual environment prevents libraries from being downgraded or running into other issues.
