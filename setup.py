@@ -80,7 +80,7 @@ setup(
     author_email='bgmartins@gmail.com',
     license='BSD 2-clause',
     packages=['gazetteer_access'],
-    install_requires=['rasterio', 'rasterstats', 'spatialite', 'geojson', 'parsedatetime', 'nuts-finder', 'shapely', 'fiona' ],
+    install_requires=['rasterio', 'rasterstats', 'spatialite', 'geojson', 'parsedatetime', 'nuts-finder', 'shapely', 'fiona', 'pyproj' ],
     include_package_data=True,
     package_data={'': ['vectornet_polygons/*']},
     cmdclass={

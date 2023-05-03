@@ -2,6 +2,7 @@ import sqlite3
 import geojson
 import pkg_resources
 import fiona
+import pyproj
 from shapely import geometry
 
 def reverse_geocode_point( lat, lon, EPSG=32632, onlyFirst = True, vectorNet = True, geoJSON = True ):
@@ -11,10 +12,8 @@ def reverse_geocode_point( lat, lon, EPSG=32632, onlyFirst = True, vectorNet = T
         featureCollection = list()
         p = geometry.Point(lon, lat)
         for region in shapes:
-            print(region["properties"])
-            break
-            s = geometry.shape(region["properties"])
-            if s.contains(p): featureCollection.append(region["properties"])
+            s = geometry.shape(region["geometry"])
+            if s.contains(p): featureCollection.append(region)
     else:
         db = pkg_resources.resource_filename(__name__, 'gazetteer.db')
         connection = sqlite3.connect(db)
