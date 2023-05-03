@@ -37,7 +37,12 @@ def reverse_geocode_geometry( polygonal_region , EPSG=32632, onlyFirst = True, v
         shapefile = pkg_resources.resource_filename(__name__, 'vectornet_polygons/VectornetDATAforMOOD.shp')
         shapes = fiona.open(shapefile)
         featureCollection = list()
-        p = geometry.shape(polygonal_region)
+        if isinstance(polygonal_region, str):
+            try: 
+                p = shapely.wkt.loads(polygonal_region)
+            except: 
+                p = geometry.shape(geojson.loads(polygonal_region))
+        else: p = geometry.shape(polygonal_region)
         max_area = 0
         for region in shapes:
             s = geometry.shape(region["geometry"])
@@ -62,5 +67,11 @@ def reverse_geocode_geometry( polygonal_region , EPSG=32632, onlyFirst = True, v
     return featureCollection
 
 if __name__ == "__main__":
-    aux = reverse_geocode_point(38.7223, -9.1393)    
+    aux = reverse_geocode_point(38.7223, -9.1393)
+    print(aux)
+    lisbon = {
+        "type": "Polygon",
+        "coordinates": [ [ [-9.2242, 38.6916], [-9.2394, 38.7267], [-9.1683, 38.7397], [-9.1355, 38.7209], [-9.1417, 38.6974], [-9.2242, 38.6916] ] ]
+    }
+    aux = reverse_geocode_geometry(lisbon)
     print(aux)
