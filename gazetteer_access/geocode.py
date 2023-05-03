@@ -2,7 +2,7 @@ import sqlite3
 import geojson
 import pkg_resources
 
-def geocode_placename(name , type=None, onlyFirst=True, centroid=False, vectorNet = True):
+def geocode_placename(name , type=None, onlyFirst=True, centroid=False, vectorNet = True, geoJSON = True):
     db = pkg_resources.resource_filename(__name__, 'gazetteer.db')
     connection = sqlite3.connect(db)
     if centroid:
@@ -27,6 +27,7 @@ def geocode_placename(name , type=None, onlyFirst=True, centroid=False, vectorNe
         parents = [ ]
         for name in multiple_names:
             i, p = get_ids_and_ancestors( name.trim() )
+    if geoJSON: featureCollection = geojson.dumps(featureCollection)
     return featureCollection
 
 def get_ids_and_ancestors(name):
@@ -36,6 +37,5 @@ def get_ids_and_ancestors(name):
 
 if __name__ == "__main__":
     aux = geocode_placename("Lisbon")
-    GeoJSONFeatureCollectionAsString = geojson.dumps(aux)
-    print(GeoJSONFeatureCollectionAsString)
+    print(aux)
 
