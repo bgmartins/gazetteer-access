@@ -8,11 +8,18 @@ Simple Python library supporting the access to the [who's on first gazetteer dat
 
 **Currently under development!** 
 
+Installation
+-------------
+
+```
+pip install git+https://github.com/bgmartins/gazetteer-access
+```
+
 Example usage
 -------------
 
 ```
->>> import gazetteer-access
+>>> import gazetteer_access
 >>> geocode = Geocoder()
 >>> geocode.geocode_placename("Lisbon")
 ```
