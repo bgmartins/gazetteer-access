@@ -1,8 +1,20 @@
 import sqlite3
 import geojson
 import pkg_resources
+import fiona
+from shapely import geometry
 
-def reverse_geocode_point( lat, lon, EPSG=32632, onlyFirst = True ):
+def reverse_geocode_point( lat, lon, EPSG=32632, onlyFirst = True, vectorNet = True ):
+    if vectorNet:
+        db = pkg_resources.resource_filename(__name__, 'vectornet_polygons/VectornetDATAforMOOD.shp')
+        shapes = fiona.open("my_shapefile.shp")
+
+        featureCollection = list()
+        p = geometry.Point(lon, lat)
+        for region in shapes["features"]:
+            s = geometry.shape(region["geometry"])
+            if s.contains(p): featureCollection.append(region)
+        return featureCollection
     db = pkg_resources.resource_filename(__name__, 'gazetteer.db')
     connection = sqlite3.connect(db)
     cursor = connection.execute("SELECT DISTINCT AsGeoJSON(geometry.geom), place.id, place.type FROM place, search, geometry WHERE place.id=search.id AND place.source=search.source AND place.id=geometry.id AND place.source=geometry.source AND ST_Intersects(geometry.geom, ST_GeomFromText('POINT (?)',32632)) AND geometry.role='boundary' ORDER BY Area(geometry.geom) ASC;", (lat, lon) )

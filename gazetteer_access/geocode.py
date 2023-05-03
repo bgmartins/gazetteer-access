@@ -2,7 +2,7 @@ import sqlite3
 import geojson
 import pkg_resources
 
-def geocode_placename(name , type=None, onlyFirst=True, centroid=False):
+def geocode_placename(name , type=None, onlyFirst=True, centroid=False, vectorNet = True):
     db = pkg_resources.resource_filename(__name__, 'gazetteer.db')
     connection = sqlite3.connect(db)
     if centroid:

@@ -82,7 +82,7 @@ setup(
     packages=['gazetteer_access'],
     install_requires=['rasterio', 'rasterstats', 'spatialite', 'geojson', 'parsedatetime', 'nuts-finder' ],
     include_package_data=True,
-    package_data={'': ['VectorNet_Polygons/*']},
+    package_data={'': ['vectornet_polygons/*']},
     cmdclass={
         'develop': PostDevelopCommand,
         'install': PostInstallCommand,
