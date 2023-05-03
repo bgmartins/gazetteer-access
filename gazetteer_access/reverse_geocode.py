@@ -40,11 +40,11 @@ def reverse_geocode_geometry( polygonal_region , EPSG=32632, onlyFirst = True, v
         p = geometry.shape(polygonal_region)
         max_area = 0
         for region in shapes:
-            s = geometry.shape(region["properties"])
+            s = geometry.shape(region["geometry"])
             area = s.intersection(p).area / p.area
             if area > max_area: 
                 featureCollection.pop()
-                featureCollection.append(region["properties"])
+                featureCollection.append(region)
     else:
         db = pkg_resources.resource_filename(__name__, 'gazetteer.db')
         connection = sqlite3.connect(db)
