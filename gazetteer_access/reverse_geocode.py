@@ -7,13 +7,13 @@ from shapely import geometry
 def reverse_geocode_point( lat, lon, EPSG=32632, onlyFirst = True, vectorNet = True ):
     if vectorNet:
         shapefile = pkg_resources.resource_filename(__name__, 'vectornet_polygons/VectornetDATAforMOOD.shp')
-        shapes = fiona.open("shapefile.shp")
-
+        shapes = fiona.open(shapefile)
         featureCollection = list()
         p = geometry.Point(lon, lat)
-        for region in shapes["features"]:
-            s = geometry.shape(region["geometry"])
-            if s.contains(p): featureCollection.append(region)
+        for region in shapes:
+            print(region)
+            #s = geometry.shape(region["geometry"])
+            #if s.contains(p): featureCollection.append(region)
         return featureCollection
     db = pkg_resources.resource_filename(__name__, 'gazetteer.db')
     connection = sqlite3.connect(db)
