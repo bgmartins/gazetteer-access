@@ -1,4 +1,4 @@
-import spatialite
+import sqlite3
 import geojson
 
 def reverse_geocode_point( lat, lon, EPSG=32632, onlyFirst = True ):

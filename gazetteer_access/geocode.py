@@ -1,4 +1,4 @@
-import spatialite
+import sqlite3
 import geojson
 import pkg_resources
 

@@ -1,4 +1,4 @@
-import spatialite
+import sqlite3
 import urllib
 import gzip
 import bz2
