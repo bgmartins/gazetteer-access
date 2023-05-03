@@ -1,5 +1,6 @@
 import sqlite3
 import geojson
+import pkg_resources
 
 def reverse_geocode_point( lat, lon, EPSG=32632, onlyFirst = True ):
     db = pkg_resources.resource_filename(__name__, 'gazetteer.db')

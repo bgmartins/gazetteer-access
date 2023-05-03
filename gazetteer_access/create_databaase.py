@@ -1,3 +1,4 @@
+import pkg_resources
 import sqlite3
 import urllib
 import gzip

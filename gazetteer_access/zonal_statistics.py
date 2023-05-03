@@ -4,6 +4,7 @@ import gzip
 import bz2
 import rasterio
 import rasterstats
+import pkg_resources
 
 def zonal_statistics( name , raster, stats=['min', 'max', 'mean', 'median', 'majority', 'minority', 'unique', 'count', 'sum', 'std']):
     raster_data = rasterio.open(raster)

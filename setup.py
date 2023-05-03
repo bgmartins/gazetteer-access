@@ -1,3 +1,4 @@
+import pkg_resources
 from setuptools import setup
 from setuptools.command.develop import develop
 from setuptools.command.install import install
