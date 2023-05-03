@@ -80,7 +80,7 @@ setup(
     author_email='bgmartins@gmail.com',
     license='BSD 2-clause',
     packages=['gazetteer_access'],
-    install_requires=['rasterio', 'rasterstats', 'spatialite', 'geojson', 'requests' ],
+    install_requires=['rasterio', 'rasterstats', 'spatialite', 'geojson', 'parsedatetime' ],
     include_package_data=True,
     package_data={'': ['*.db']},
     cmdclass={
