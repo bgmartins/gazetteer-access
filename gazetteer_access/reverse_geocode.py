@@ -11,7 +11,9 @@ def reverse_geocode_point( lat, lon, EPSG=32632, onlyFirst = True, vectorNet = T
         featureCollection = list()
         p = geometry.Point(lon, lat)
         for region in shapes:
-            s = geometry.shape(region["properties"]["geometry"])
+            print(region["properties"])
+            break
+            s = geometry.shape(region["properties"])
             if s.contains(p): featureCollection.append(region["properties"])
     else:
         db = pkg_resources.resource_filename(__name__, 'gazetteer.db')
