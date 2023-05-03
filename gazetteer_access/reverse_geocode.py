@@ -69,6 +69,7 @@ def reverse_geocode_geometry( polygonal_region , EPSG=32632, onlyFirst = True, v
 if __name__ == "__main__":
     aux = reverse_geocode_point(38.7223, -9.1393)
     print(aux)
+    
     lisbon = {
         "type": "Polygon",
         "coordinates": [ [ [-9.2242, 38.6916], [-9.2394, 38.7267], [-9.1683, 38.7397], [-9.1355, 38.7209], [-9.1417, 38.6974], [-9.2242, 38.6916] ] ]
