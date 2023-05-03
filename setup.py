@@ -16,7 +16,7 @@ class PostInstallCommand(install):
     def run(self):
         install.run(self)
         db = pkg_resources.resource_filename(__name__, 'gazetteer.db')
-        gazetteer_access.create_database.create_database(db)        
+        gazetteer_access.create_database(db)        
 
 setup(
     name='gazetteer_access',
