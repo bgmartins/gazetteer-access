@@ -19,7 +19,18 @@ def geocode_placename(name , type=None, onlyFirst=True, centroid=False):
         if onlyFirst: break
     connection.close()
     if len(featureCollection) == 0 and not(centroid): return geocode_placename(name , type, onlyFirst, centroid=True)
+    multiple_names = name.split(",")
+    if len(multiple_names) > 1:
+        ids = [ ]
+        parents = [ ]
+        for name in multiple_names:
+            i, p = get_ids_and_ancestors( name.trim() )
     return featureCollection
+
+def get_ids_and_ancestors(name):
+    ids = [ ]
+    parents = [ ]
+    return ids, parents
 
 if __name__ == "__main__":
     aux = geocode_placename("Lisbon")

@@ -3,6 +3,8 @@ import sqlite3
 import urllib
 import gzip
 import bz2
+import requests
+from zipfile import ZipFile
 from setuptools import setup
 from setuptools.command.develop import develop
 from setuptools.command.install import install
@@ -25,9 +27,15 @@ def download_file(url, filename):
     with open(filename, 'wb') as f:
         f.write(read_file_from_uri(url).read())
 
+#def create_population(username, password, filename):
+#    filename = os.path.basename(urlparse(pop_data).path)
+#    r = requests.get(url, auth=(username,password))
+#    with ZipFile(r, 'r') as zipObj:
+#        zipObj.extract("", path=filename, pwd=None)
+
 def create_database(filename):
-    print("Downloading data from https://geocode.earth/data/whosonfirst/combined/")
-    download_file(wof_data, filename)
+    print("Downloading data from https://geocode.earth/data/whosonfirst/combined/", file=sys.stderr)
+    #download_file(wof_data, filename)
     conn = sqlite3.connect(filename)
     conn.commit()
     conn.execute("vacuum")
@@ -56,7 +64,7 @@ setup(
     author_email='bgmartins@gmail.com',
     license='BSD 2-clause',
     packages=['gazetteer_access'],
-    install_requires=['rasterio', 'rasterstats', 'spatialite', 'geojson', ],
+    install_requires=['rasterio', 'rasterstats', 'spatialite', 'geojson', 'requests' ],
     include_package_data=True,
     package_data={'': ['*.db']},
     cmdclass={
