@@ -8,7 +8,7 @@ setup(
     author='Bruno Martins',
     author_email='bgmartins@gmail.com',
     license='BSD 2-clause',
-    packages=['gazetteer-access'],
+    packages=['gazetteer_access'],
     install_requires=['rasterio', 'rasterstats', 'spatialite', 'geojson', ],
 
     classifiers=[
