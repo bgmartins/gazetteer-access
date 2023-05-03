@@ -9,7 +9,7 @@ class PostDevelopCommand(develop):
     def run(self):
         develop.run(self)
         db = pkg_resources.resource_filename(__name__, 'gazetteer.db')
-        gazetteer_access.create_database.create_database(db)
+        gazetteer_access.create_database(db)
 
 class PostInstallCommand(install):
     """Post-installation for installation mode."""
