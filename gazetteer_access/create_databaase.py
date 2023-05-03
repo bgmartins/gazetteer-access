@@ -22,7 +22,7 @@ def download_file(url, filename):
         f.write(read_file_from_uri(url).read())
 
 def create_database(filename):
-    print("Doenloading data from https://geocode.earth/data/whosonfirst/combined/")
+    print("Downloading data from https://geocode.earth/data/whosonfirst/combined/")
     download_file(wof_data, filename)
     conn = sqlite3.connect(filename)
     conn.commit()

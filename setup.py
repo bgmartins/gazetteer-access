@@ -1,4 +1,20 @@
 from setuptools import setup
+from setuptools.command.develop import develop
+from setuptools.command.install import install
+
+class PostDevelopCommand(develop):
+    """Post-installation for development mode."""
+    def run(self):
+        develop.run(self)
+        db = pkg_resources.resource_filename(__name__, 'gazetteer.db')
+        gazetteer_access.create_database.create_database(db)
+
+class PostInstallCommand(install):
+    """Post-installation for installation mode."""
+    def run(self):
+        install.run(self)
+        db = pkg_resources.resource_filename(__name__, 'gazetteer.db')
+        gazetteer_access.create_database.create_database(db)        
 
 setup(
     name='gazetteer_access',
@@ -12,6 +28,10 @@ setup(
     install_requires=['rasterio', 'rasterstats', 'spatialite', 'geojson', ],
     include_package_data=True,
     package_data={'': ['*.db']},
+    cmdclass={
+        'develop': PostDevelopCommand,
+        'install': PostInstallCommand,
+    },
 
     classifiers=[
         'Development Status :: 1 - Planning',
