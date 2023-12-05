@@ -3,7 +3,7 @@
 Simple Python library supporting the access to the [who's on first gazetteer data](https://geocode.earth/data/whosonfirst/combined/). 
 
 * Convert placenames into structured geographic information (i.e., geocode place names into GeoJSON geometries).
-* Convert point locations of GeoJSON geometries into placenames (i.e., reverse geocoding).
+* Convert point locations or GeoJSON geometries into placenames and cannonical regions (i.e., reverse geocoding).
 * Compute zonal statistics from placenames and raster data.
 
 **Currently under development!** 
